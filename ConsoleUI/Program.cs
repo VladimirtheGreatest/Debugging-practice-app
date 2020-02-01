@@ -42,14 +42,19 @@ namespace ConsoleUI
                 ent.WorkDone = w;
                 ents.Add(ent);
                 Console.Write("Do you want to enter more time:");
-                cont = bool.Parse(Console.ReadLine());
+                input = Console.ReadLine();
+                cont = false;
+                if (input?.ToLower() == "yes")
+                {
+                    cont = true;
+                }
             }
             ttl = 0;
             for (i = 0; i < ents.Count; i++)
             {
                 if (ents[i].WorkDone.Contains("Acme"))
                 {
-                    ttl += i;
+                    ttl += ents[i].HoursWorked;
                 }
             }
             Console.WriteLine("Simulating Sending email to Acme");
